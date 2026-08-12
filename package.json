@@ -1,0 +1,29 @@
+{
+  "name": "resume",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Personal resume site. React + Vite + Tailwind. Areas of expertise (input) feed into a filterable career history (processing), closing with contact details (output).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "test": "node test-scroll-behavior.cjs && sleep 1 && node test-skills-indentation.cjs && sleep 1 && node test-result-alignment.cjs && sleep 1 && node test-trackpad-inertia.cjs && sleep 1 && node test-products-mount-timing.cjs"
+  },
+  "dependencies": {
+    "lucide-react": "^1.31.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "oxlint": "^1.75.0",
+    "playwright": "^1.62.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.0"
+  }
+}

@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  /* Light theme is the default value for every token below — the site's
+     original "Projects" palette, now applied everywhere rather than just
+     that one section. Dark theme (the site's original hero/editor look)
+     overrides these same tokens under [data-theme="dark"], so every
+     className in every component stays exactly as written — only the
+     underlying CSS variable value changes. */
+  --color-bg: #f5f2ec;
+  --color-bg-card: #ece5d8;
+  --color-ink: #171512;
+  --color-ink-dim: #8a8479;
+  --color-accent: #e8440a;
+  --color-border: #ddd2bc;
+
+  --color-hero-bg: #f5f2ec;
+  --color-hero-ink: #171512;
+  --color-hero-dim: #8a8479;
+  --color-hero-border: #ddd2bc;
+
+  --color-editor-bg: #f5f2ec;
+  --color-editor-line: #ddd2bc;
+  --color-editor-gutter: #8a8479;
+  --color-editor-comment: #8a8479;
+  --color-editor-ink: #171512;
+  --color-editor-key: #a15d1f;
+  --color-editor-kw: #b34a30;
+  /* String values are the actual message (skill names, company names, the
+     result sentences) — they read as the strongest, darkest tone in the
+     block, same as editor-ink, rather than a muted syntax-highlight color.
+     Keys/keywords stay muted since they're structural, not the content. */
+  --color-editor-string: #171512;
+
+  --font-display: "Syne", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --animate-bounce-slow: bounce-slow 2s ease-in-out infinite;
+  --animate-cursor-blink: cursor-blink 1s steps(1) infinite;
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  @keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #1c1b19;
+  --color-bg-card: #2c2a26;
+  --color-ink: #f2efe9;
+  --color-ink-dim: #948f86;
+  --color-accent: #e8440a;
+  --color-border: #38362f;
+
+  --color-hero-bg: #232220;
+  --color-hero-ink: #f2efe9;
+  --color-hero-dim: #948f86;
+  --color-hero-border: #38362f;
+
+  --color-editor-bg: #1c1b19;
+  --color-editor-line: #2c2a26;
+  --color-editor-gutter: #5a564c;
+  --color-editor-comment: #6b6459;
+  --color-editor-ink: #d8d4cb;
+  --color-editor-key: #e0a45c;
+  --color-editor-kw: #c9705a;
+  --color-editor-string: #d8d4cb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
