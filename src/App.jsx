@@ -7,12 +7,46 @@ import ThemeToggle from './ThemeToggle';
 import { onNextAdvance } from './advance';
 
 export default function App() {
+  const heroRef = useRef(null);
   const thesisRef = useRef(null);
   const stageRef = useRef(null);
   const [stageStarted, setStageStarted] = useState(false);
   const [resultTyped, setResultTyped] = useState(false);
   const editorStartedRef = useRef(false);
+  const heroArmedRef = useRef(false);
   const thesisArmedRef = useRef(false);
+
+  // Hero: Return/ArrowDown/scroll to advance to thesis (only once hero is
+  // the active section). Native scroll-snap already carries a scroll
+  // gesture there on its own with no JS needed, but a keypress has nothing
+  // to natively scroll an unfocused <main> — without this, Return/ArrowDown
+  // silently did nothing while resting on hero, the only section missing
+  // this wiring (thesis and stage both have their own).
+  useEffect(() => {
+    const heroEl = heroRef.current;
+    const thesisEl = thesisRef.current;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function enterThesis() {
+      thesisEl.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !heroArmedRef.current) {
+          heroArmedRef.current = true;
+          onNextAdvance(() => {
+            heroObserver.disconnect();
+            enterThesis();
+          }, { keepInPlace: true });
+        }
+      });
+    }, { threshold: 0.9 });
+
+    heroObserver.observe(heroEl);
+
+    return () => heroObserver.disconnect();
+  }, []);
 
   // Thesis: return or scroll to advance (only once thesis is the active
   // section). Thesis stays in the DOM permanently, as a normal snap-scroll
@@ -57,7 +91,7 @@ export default function App() {
     <>
       <ThemeToggle />
       <main className="h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
-        <Hero />
+        <Hero ref={heroRef} />
         <Thesis ref={thesisRef} />
         <Stage ref={stageRef} started={stageStarted} onResultTyped={() => setResultTyped(true)} />
         {/* Products only enters the DOM once the code section is genuinely

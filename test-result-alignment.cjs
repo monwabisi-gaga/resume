@@ -48,12 +48,18 @@ async function main() {
   await realisticScroll(page, 800);
   await page.waitForTimeout(1200); // fold experience + calibrate() typing
   await realisticScroll(page, 800);
-  await page.waitForTimeout(2500); // result typing
+  await page.waitForTimeout(3200); // result comment (900ms) + result itself (1600ms) + margin
 
   const text = await page.$eval('[data-code-column]', (el) => el.textContent);
   check('sequence reached the result block', text.includes('adaptability') && text.includes('durability'));
   const resultBlockText = text.slice(text.indexOf('adaptability'));
   check('result block has no em dashes (—) per the final approved copy', !resultBlockText.includes('—'));
+
+  // The comment directly above `const result` is prose the reader actually
+  // sees, same standing "no em dashes" rule as the result values themselves
+  // — only date-range spans like "2024 — present" are allowed to keep one.
+  const resultCommentText = text.slice(text.indexOf('/**', text.indexOf('calibrate(')), text.indexOf('const result ='));
+  check('comment above result has no em dashes', !resultCommentText.includes('—'));
 
   const gutterRects = await page.$eval('[data-line-gutter]', (el) =>
     Array.from(el.children)

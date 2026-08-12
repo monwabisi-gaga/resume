@@ -62,7 +62,7 @@ export function onNextAdvance(callback, { scrollDelay = SCROLL_ARM_DELAY, keepIn
   }
 
   function onKeydown(e) {
-    if (e.key !== 'Enter') return;
+    if (e.key !== 'Enter' && e.key !== 'ArrowDown') return;
     e.preventDefault();
     fire('key');
   }

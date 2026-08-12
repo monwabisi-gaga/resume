@@ -78,7 +78,7 @@ export const EXPERIENCE_ENTRIES = [
   { company: 'BlazeGard', role: 'Founder & ML Engineer', span: '2024 — 2025', stack: ['PyTorch', 'YOLOv5', 'FastAPI', 'TensorRT/ONNX'] },
   { company: 'Platform45', role: 'Senior Software Engineer', span: '2024 — 2025', stack: ['Ruby on Rails', 'Heroku', 'New Relic', 'Azure'] },
   { company: 'Docfox', role: 'Fullstack Developer', span: '2021 — 2024', stack: ['Ruby on Rails', 'React', 'Cypress', 'RSpec'] },
-  { era: 'Early Career', role: 'Web Developer → Fullstack Developer', span: '2012 — 2021', note: '12 short engagements compressed into one line — this is where the range came from.' },
+  { era: 'Early Career', role: 'Web Developer → Fullstack Developer', span: '2012 — 2021', note: '12 short engagements compressed into one line, this is where the range came from.' },
 ];
 
 export const EXPERIENCE_LINES = [
@@ -114,6 +114,14 @@ export const RESULT_DATA = [
 // regardless of which key is longer.
 const RESULT_KEY_COLUMN_WIDTH = Math.max(...RESULT_DATA.map(([key]) => `  ${key}: `.length));
 
+export const RESULT_COMMENT_LINES = [
+  [{ t: '/**', c: 'text-editor-comment italic' }],
+  [{ t: ' * What that ', c: 'text-editor-comment italic' }, { t: 'exposure', c: 'text-editor-ink' }, { t: ' and ', c: 'text-editor-comment italic' }, { t: 'experience', c: 'text-editor-ink' }, { t: ' add up to, in practice:', c: 'text-editor-comment italic' }],
+  [{ t: ' * the ', c: 'text-editor-comment italic' }, { t: 'calibre', c: 'text-editor-ink' }, { t: ' of engineer they actually produce.', c: 'text-editor-comment italic' }],
+  [{ t: ' */', c: 'text-editor-comment italic' }],
+  [],
+];
+
 export const RESULT_LINES = [
   [{ t: 'const ', c: 'text-editor-kw' }, { t: 'result', c: 'text-editor-ink' }, { t: ' = {', c: 'text-editor-gutter' }],
   ...RESULT_DATA.flatMap(([key, value], i) => {
@@ -135,7 +143,7 @@ export const RESULT_LINES = [
 export const COMMENT_LINES = [
   [{ t: '/**', c: 'text-editor-comment italic' }],
   [{ t: ' * Software development, broken down to a certain level, is a series of ', c: 'text-editor-comment italic' }, { t: 'method calls', c: 'text-editor-ink' }, { t: ' which accept data', c: 'text-editor-comment italic' }],
-  [{ t: ' * (', c: 'text-editor-comment italic' }, { t: 'user input', c: 'text-editor-ink' }, { t: ') as parameters — parameters which we declare as ', c: 'text-editor-comment italic' }, { t: 'variables', c: 'text-editor-ink' }, { t: '.', c: 'text-editor-comment italic' }],
+  [{ t: ' * (', c: 'text-editor-comment italic' }, { t: 'user input', c: 'text-editor-ink' }, { t: '), parameters which we declare as ', c: 'text-editor-comment italic' }, { t: 'variables', c: 'text-editor-ink' }, { t: '.', c: 'text-editor-comment italic' }],
   [{ t: ' */', c: 'text-editor-comment italic' }],
   [],
 ];

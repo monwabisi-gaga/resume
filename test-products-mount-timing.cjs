@@ -57,12 +57,12 @@ async function main() {
   check('3 sections after fold-experience advance', (await sectionCount()) === 3);
 
   await realisticScroll(page, 800);
-  await page.waitForTimeout(1000); // mid-result-typing, NOT finished yet
+  await page.waitForTimeout(1000); // mid-result-comment-typing, NOT finished yet
   check('still 3 sections mid-result-typing (not done yet)', (await sectionCount()) === 3);
   check('scrollHeight still capped at 2700 mid-result-typing', (await scrollHeight()) === 2700);
   check('Products still not in the DOM mid-result-typing', !(await hasProducts()));
 
-  await page.waitForTimeout(700); // let result finish typing
+  await page.waitForTimeout(1500); // let the result comment (900ms) + result itself (1600ms) finish typing
   check('4 sections the instant result finishes typing', (await sectionCount()) === 4);
   check('scrollHeight grows to 3600 the instant result finishes', (await scrollHeight()) === 3600);
   check('Products exists in the DOM now', await hasProducts());
@@ -104,7 +104,7 @@ async function main() {
   await realisticScroll(page, 800);
   await page.waitForTimeout(1200);
   await realisticScroll(page, 800);
-  await page.waitForTimeout(2500);
+  await page.waitForTimeout(3200); // result comment (900ms) + result itself (1600ms) + margin
 
   const scrollTopBeforeKey = await page.$eval('main', (el) => el.scrollTop);
   check('resting on stage before pressing Enter (1800)', scrollTopBeforeKey === 1800);

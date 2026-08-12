@@ -1,13 +1,14 @@
+import { forwardRef } from 'react';
 import { MapPin, Mail } from 'lucide-react';
 import AdvanceCue from './AdvanceCue';
 
-export default function Hero() {
+const Hero = forwardRef(function Hero(_props, ref) {
   return (
-    <section className="relative flex h-screen shrink-0 snap-start snap-always flex-col items-center justify-center bg-hero-bg px-8 text-hero-ink">
+    <section ref={ref} className="relative flex h-screen shrink-0 snap-start snap-always flex-col items-center justify-center bg-hero-bg px-8 text-hero-ink">
       <div className="w-full max-w-[696px]">
         <h1 className="mb-[18px] font-display text-[clamp(48px,9vw,96px)] font-extrabold leading-[0.98] tracking-[-0.015em] text-hero-ink">Monwabisi Gaga</h1>
         <p className="mb-5 font-mono text-[clamp(16px,1.9vw,19px)] font-bold tracking-[0.01em] text-accent">
-          Full-stack Developer <span className="font-normal italic text-hero-dim">— battle tested</span>
+          Full-stack Developer<span className="text-hero-ink">;</span> <span className="font-normal italic text-hero-dim">battle tested</span>
         </p>
         <p className="mb-8 flex items-center gap-[7px] font-mono text-sm text-hero-dim">
           <MapPin className="h-[15px] w-[15px] shrink-0 text-accent" strokeWidth={2} aria-hidden="true" />
@@ -29,4 +30,6 @@ export default function Hero() {
       <AdvanceCue label="scroll" color="text-hero-dim" />
     </section>
   );
-}
+});
+
+export default Hero;

@@ -9,6 +9,7 @@ import {
   EXPERIENCE_LINES,
   EXPERIENCE_SUMMARY_LINE,
   CALIBRATE_CALL_LINES,
+  RESULT_COMMENT_LINES,
   RESULT_LINES,
 } from './typewriterData';
 
@@ -19,6 +20,7 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
   const gutterRef = useRef(null);
   const codeColumnRef = useRef(null);
   const advanceCueRef = useRef(null);
+  const phaseLabelRef = useRef(null);
   const startedOnceRef = useRef(false);
 
   useEffect(() => {
@@ -51,10 +53,19 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
       return source;
     }
 
+    // Ties the code back to the thesis's input -> process -> output framing
+    // (skills/experience ARE the input, calibrate() IS the process, result
+    // IS the output) — without this label, that mapping only lives in the
+    // reader's memory of a section they scrolled past minutes earlier.
+    function setPhase(phase) {
+      if (phaseLabelRef.current) phaseLabelRef.current.textContent = phase;
+    }
+
     let cancelled = false;
 
     async function runSequence() {
       typewriter.reset();
+      setPhase('input');
 
       await typewriter.typeLines(COMMENT_LINES, { durationMs: DOCBLOCK_DURATION });
       await typewriter.typeLines(SKILLS_LINES, { durationMs: SKILLS_DURATION });
@@ -77,12 +88,16 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
 
       typewriter.addSpacer();
 
+      setPhase('process');
       await typewriter.typeLines(CALIBRATE_CALL_LINES, { durationMs: 500 });
       if (cancelled) return;
       await showAdvanceCue();
 
       typewriter.addSpacer();
 
+      setPhase('output');
+      await typewriter.typeLines(RESULT_COMMENT_LINES, { durationMs: 900 });
+      if (cancelled) return;
       await typewriter.typeLines(RESULT_LINES, { durationMs: 1600 });
       if (cancelled) return;
       // "Done" means the last character of result has actually been
@@ -124,6 +139,12 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
 
   return (
     <section ref={ref} data-stage className="relative flex h-screen shrink-0 snap-start snap-always items-start overflow-hidden bg-editor-bg px-0 pt-24 text-editor-ink">
+      <p
+        ref={phaseLabelRef}
+        data-phase-label
+        className="absolute top-8 left-6 font-mono text-xs font-bold tracking-[0.24em] text-editor-ink uppercase sm:left-9"
+      />
+
       <div className="mx-auto flex w-full max-w-7xl px-6">
         <div aria-hidden="true" ref={gutterRef} data-line-gutter className="w-[3ch] shrink-0 select-none pr-4 text-right font-mono text-sm leading-[1.7] text-editor-gutter" />
         <div ref={codeColumnRef} data-code-column className="min-h-[1.7em] flex-1 whitespace-pre-wrap break-words border-l border-editor-line pl-6 pr-28 font-mono text-sm leading-[1.7]" />
