@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useState } from 'react';
+import DeskSprite from './DeskSprite';
 
 const Products = forwardRef(function Products(_props, ref) {
   const [revealed, setRevealed] = useState(false);
@@ -68,20 +69,24 @@ const Products = forwardRef(function Products(_props, ref) {
               <span className="rounded-full bg-accent px-3 py-1 font-mono text-[11px] font-bold tracking-[0.08em] text-bg uppercase">Demo</span>
             </div>
             <p className="mb-5 text-[15px] leading-[1.6] text-ink">
-              Real-time ride matching for local transport: passengers and drivers share live location over WebSockets, matched by server-side proximity within a 5km radius, with admin-drawn route coverage.
+              Matches passengers with drivers heading the same way, the way minibus taxis actually work: if a passenger and driver travel the same route at the same pace for 30 seconds, they're paired and the passenger confirms the match to process payment.
             </p>
             <ul className="mb-6 flex flex-wrap gap-2 font-mono text-xs text-ink-dim">
               <li className="rounded-full bg-bg px-2.5 py-1">React</li>
-              <li className="rounded-full bg-bg px-2.5 py-1">Express</li>
+              <li className="rounded-full bg-bg px-2.5 py-1">TypeScript</li>
               <li className="rounded-full bg-bg px-2.5 py-1">WebSockets</li>
               <li className="rounded-full bg-bg px-2.5 py-1">PostgreSQL</li>
-              <li className="rounded-full bg-bg px-2.5 py-1">Drizzle ORM</li>
+              <li className="rounded-full bg-bg px-2.5 py-1">Google Maps</li>
             </ul>
             <a href="https://orange-dot-taxi--monwabisigaga.replit.app" target="_blank" rel="noopener" className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-bold text-accent hover:underline">
               Visit OrangeDotTaxi
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M7 7h10v10" /></svg>
             </a>
           </div>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <DeskSprite />
         </div>
       </div>
     </section>

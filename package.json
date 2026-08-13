@@ -12,6 +12,7 @@
     "test": "node test-scroll-behavior.cjs && sleep 1 && node test-skills-indentation.cjs && sleep 1 && node test-result-alignment.cjs && sleep 1 && node test-trackpad-inertia.cjs && sleep 1 && node test-products-mount-timing.cjs"
   },
   "dependencies": {
+    "animejs": "^4.5.0",
     "lucide-react": "^1.31.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
