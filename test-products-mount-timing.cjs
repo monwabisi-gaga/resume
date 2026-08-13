@@ -64,7 +64,11 @@ async function main() {
 
   await page.waitForTimeout(1500); // let the result comment (900ms) + result itself (1600ms) finish typing
   check('4 sections the instant result finishes typing', (await sectionCount()) === 4);
-  check('scrollHeight grows to 3600 the instant result finishes', (await scrollHeight()) === 3600);
+  // Products is min-h-screen, not h-screen (it grows taller than one
+  // viewport to fit its cards + footer character without clipping), so
+  // the exact height is viewport-dependent — only the "grew past 3
+  // sections" invariant is real.
+  check('scrollHeight grows past 2700 the instant result finishes', (await scrollHeight()) > 2700);
   check('Products exists in the DOM now', await hasProducts());
 
   const scrollTopStillOnStage = await page.$eval('main', (el) => el.scrollTop);

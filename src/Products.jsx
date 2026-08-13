@@ -13,7 +13,7 @@ const Products = forwardRef(function Products(_props, ref) {
   }, []);
 
   return (
-    <section ref={ref} className="flex h-screen shrink-0 snap-start snap-always flex-col items-center justify-center bg-bg px-8 text-ink">
+    <section ref={ref} className="flex min-h-screen shrink-0 snap-start snap-always flex-col items-center justify-between gap-10 bg-bg px-8 pt-24 pb-0 text-ink">
       <div
         className={`w-full max-w-[1180px] transition-all duration-700 ease-out motion-reduce:transition-none ${
           revealed ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
@@ -84,10 +84,10 @@ const Products = forwardRef(function Products(_props, ref) {
             </a>
           </div>
         </div>
+      </div>
 
-        <div className="mt-8 flex justify-center">
-          <DeskSprite />
-        </div>
+      <div className="w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[420px]">
+        <DeskSprite />
       </div>
     </section>
   );
