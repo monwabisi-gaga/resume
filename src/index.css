@@ -32,6 +32,12 @@
      Keys/keywords stay muted since they're structural, not the content. */
   --color-editor-string: #171512;
 
+  /* The desk-scene illustration is a single dark ink color on a
+     transparent background (see DeskSprite.jsx), so a plain invert
+     flips it to a light ink on transparent for dark mode, rather than
+     needing a second traced asset. */
+  --sprite-filter: none;
+
   --font-display: "Syne", sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
@@ -70,6 +76,8 @@
   --color-editor-key: #e0a45c;
   --color-editor-kw: #c9705a;
   --color-editor-string: #d8d4cb;
+
+  --sprite-filter: invert(1);
 }
 
 html {

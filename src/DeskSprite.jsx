@@ -8,7 +8,7 @@ export default function DeskSprite() {
     <img
       src={deskSceneUrl}
       alt="Pixel-art illustration of a developer at a desk with a monitor, coffee mug, desk lamp, and a dinosaur wearing headphones"
-      className="h-auto w-full max-w-[520px]"
+      className="h-auto w-full max-w-[520px] [filter:var(--sprite-filter)]"
     />
   );
 }
