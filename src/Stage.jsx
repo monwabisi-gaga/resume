@@ -4,10 +4,13 @@ import { createStageSettleTracker } from './advance';
 import AdvanceCue from './AdvanceCue';
 import {
   COMMENT_LINES,
+  SKILLS_INTRO_LINES,
   SKILLS_LINES,
   SKILLS_SUMMARY_LINE,
+  EXPERIENCE_INTRO_LINES,
   EXPERIENCE_LINES,
   EXPERIENCE_SUMMARY_LINE,
+  CALIBRATE_INTRO_LINES,
   CALIBRATE_CALL_LINES,
   RESULT_COMMENT_LINES,
   RESULT_LINES,
@@ -68,6 +71,7 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
       setPhase('input');
 
       await typewriter.typeLines(COMMENT_LINES, { durationMs: DOCBLOCK_DURATION });
+      await typewriter.typeLines(SKILLS_INTRO_LINES, { durationMs: 400 });
       await typewriter.typeLines(SKILLS_LINES, { durationMs: SKILLS_DURATION });
       if (cancelled) return;
       await showAdvanceCue();
@@ -79,6 +83,7 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
       // it doesn't get a line number or gutter row.
       typewriter.addSpacer();
 
+      await typewriter.typeLines(EXPERIENCE_INTRO_LINES, { durationMs: 400 });
       await typewriter.typeLines(EXPERIENCE_LINES, { durationMs: 1400 });
       if (cancelled) return;
       await showAdvanceCue();
@@ -89,6 +94,7 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
       typewriter.addSpacer();
 
       setPhase('process');
+      await typewriter.typeLines(CALIBRATE_INTRO_LINES, { durationMs: 400 });
       await typewriter.typeLines(CALIBRATE_CALL_LINES, { durationMs: 500 });
       if (cancelled) return;
       await showAdvanceCue();

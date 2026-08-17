@@ -40,6 +40,10 @@ function skillsBucketLines([key, items], isLast) {
   return lines;
 }
 
+export const SKILLS_INTRO_LINES = [
+  [{ t: '// input, in its rawest form', c: 'text-editor-comment italic' }],
+];
+
 export const SKILLS_LINES = [
   [{ t: 'const ', c: 'text-editor-kw' }, { t: 'skills', c: 'text-editor-ink' }, { t: ' = {', c: 'text-editor-gutter' }],
   ...SKILLS_DATA.flatMap((entry, i) => skillsBucketLines(entry, i === SKILLS_DATA.length - 1)),
@@ -81,6 +85,10 @@ export const EXPERIENCE_ENTRIES = [
   { era: 'Early Career', role: 'Web Developer → Fullstack Developer', span: '2012 — 2021', note: '12 short engagements compressed into one line, this is where the range came from.' },
 ];
 
+export const EXPERIENCE_INTRO_LINES = [
+  [{ t: '// input, too: the years behind it', c: 'text-editor-comment italic' }],
+];
+
 export const EXPERIENCE_LINES = [
   [{ t: 'const ', c: 'text-editor-kw' }, { t: 'experience', c: 'text-editor-ink' }, { t: ' = [', c: 'text-editor-gutter' }],
   ...EXPERIENCE_ENTRIES.flatMap(experienceEntryLines),
@@ -89,6 +97,10 @@ export const EXPERIENCE_LINES = [
 
 export const EXPERIENCE_SUMMARY_LINE = [
   { t: 'const ', c: 'text-editor-kw' }, { t: 'experience', c: 'text-editor-ink' }, { t: ' = [', c: 'text-editor-gutter' }, { t: ' … ', c: 'text-editor-comment italic' }, { t: '];', c: 'text-editor-gutter' },
+];
+
+export const CALIBRATE_INTRO_LINES = [
+  [{ t: '// process: skills and experience, applied', c: 'text-editor-comment italic' }],
 ];
 
 export const CALIBRATE_CALL_LINES = [
@@ -115,10 +127,7 @@ export const RESULT_DATA = [
 const RESULT_KEY_COLUMN_WIDTH = Math.max(...RESULT_DATA.map(([key]) => `  ${key}: `.length));
 
 export const RESULT_COMMENT_LINES = [
-  [{ t: '/**', c: 'text-editor-comment italic' }],
-  [{ t: ' * What that ', c: 'text-editor-comment italic' }, { t: 'exposure', c: 'text-editor-ink' }, { t: ' and ', c: 'text-editor-comment italic' }, { t: 'experience', c: 'text-editor-ink' }, { t: ' add up to, in practice:', c: 'text-editor-comment italic' }],
-  [{ t: ' * the ', c: 'text-editor-comment italic' }, { t: 'calibre', c: 'text-editor-ink' }, { t: ' of engineer they actually produce.', c: 'text-editor-comment italic' }],
-  [{ t: ' */', c: 'text-editor-comment italic' }],
+  [{ t: '// output: skills and experience, culminating in a specific calibre engineer', c: 'text-editor-comment italic' }],
   [],
 ];
 

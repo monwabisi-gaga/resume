@@ -6,12 +6,14 @@ import Products from './Products';
 import ThemeToggle from './ThemeToggle';
 import { onNextAdvance } from './advance';
 
+const DEV_SKIP_TO_PRODUCTS = false;
+
 export default function App() {
   const heroRef = useRef(null);
   const thesisRef = useRef(null);
   const stageRef = useRef(null);
   const [stageStarted, setStageStarted] = useState(false);
-  const [resultTyped, setResultTyped] = useState(false);
+  const [resultTyped, setResultTyped] = useState(DEV_SKIP_TO_PRODUCTS);
   const editorStartedRef = useRef(false);
   const heroArmedRef = useRef(false);
   const thesisArmedRef = useRef(false);
@@ -23,6 +25,7 @@ export default function App() {
   // silently did nothing while resting on hero, the only section missing
   // this wiring (thesis and stage both have their own).
   useEffect(() => {
+    if (DEV_SKIP_TO_PRODUCTS) return undefined;
     const heroEl = heroRef.current;
     const thesisEl = thesisRef.current;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -54,6 +57,7 @@ export default function App() {
   // only starts the editor's typewriter sequence the first time; scrolling
   // forward again later must not replay it.
   useEffect(() => {
+    if (DEV_SKIP_TO_PRODUCTS) return undefined;
     const thesisEl = thesisRef.current;
     const stageEl = stageRef.current;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -91,9 +95,9 @@ export default function App() {
     <>
       <ThemeToggle />
       <main className="h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
-        <Hero ref={heroRef} />
-        <Thesis ref={thesisRef} />
-        <Stage ref={stageRef} started={stageStarted} onResultTyped={() => setResultTyped(true)} />
+        {!DEV_SKIP_TO_PRODUCTS && <Hero ref={heroRef} />}
+        {!DEV_SKIP_TO_PRODUCTS && <Thesis ref={thesisRef} />}
+        {!DEV_SKIP_TO_PRODUCTS && <Stage ref={stageRef} started={stageStarted} onResultTyped={() => setResultTyped(true)} />}
         {/* Products only enters the DOM once the code section is genuinely
             done (the last character of result has printed) — there is
             nothing to scroll into before that, not just something

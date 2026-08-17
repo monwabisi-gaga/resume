@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useState } from 'react';
-import DeskSprite from './DeskSprite';
+import DeskSpriteRepro from './DeskSpriteRepro';
 
 const Products = forwardRef(function Products(_props, ref) {
   const [revealed, setRevealed] = useState(false);
@@ -86,8 +86,8 @@ const Products = forwardRef(function Products(_props, ref) {
         </div>
       </div>
 
-      <div className="w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[420px]">
-        <DeskSprite />
+      <div className="w-full max-w-xs lg:max-w-sm">
+        <DeskSpriteRepro />
       </div>
     </section>
   );
