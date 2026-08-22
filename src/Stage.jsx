@@ -16,7 +16,7 @@ import {
   RESULT_LINES,
 } from './typewriterData';
 
-const DOCBLOCK_DURATION = 1000;
+const INTRO_COMMENT_DURATION = 1000;
 const SKILLS_DURATION = 1000;
 
 const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
@@ -70,7 +70,7 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
       typewriter.reset();
       setPhase('input');
 
-      await typewriter.typeLines(COMMENT_LINES, { durationMs: DOCBLOCK_DURATION });
+      await typewriter.typeLines(COMMENT_LINES, { durationMs: INTRO_COMMENT_DURATION });
       await typewriter.typeLines(SKILLS_INTRO_LINES, { durationMs: 400 });
       await typewriter.typeLines(SKILLS_LINES, { durationMs: SKILLS_DURATION });
       if (cancelled) return;
@@ -144,7 +144,7 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
   }, [started]);
 
   return (
-    <section ref={ref} data-stage className="relative flex h-screen shrink-0 snap-start snap-always items-start overflow-hidden bg-editor-bg px-0 pt-24 text-editor-ink">
+    <section ref={ref} data-stage className="relative flex h-screen shrink-0 snap-start snap-always items-start overflow-hidden bg-editor-bg px-0 pt-16 text-editor-ink">
       <p
         ref={phaseLabelRef}
         data-phase-label

@@ -150,9 +150,6 @@ export const RESULT_LINES = [
 ];
 
 export const COMMENT_LINES = [
-  [{ t: '/**', c: 'text-editor-comment italic' }],
-  [{ t: ' * Software development, broken down to a certain level, is a series of ', c: 'text-editor-comment italic' }, { t: 'method calls', c: 'text-editor-ink' }, { t: ' which accept data', c: 'text-editor-comment italic' }],
-  [{ t: ' * (', c: 'text-editor-comment italic' }, { t: 'user input', c: 'text-editor-ink' }, { t: '), parameters which we declare as ', c: 'text-editor-comment italic' }, { t: 'variables', c: 'text-editor-ink' }, { t: '.', c: 'text-editor-comment italic' }],
-  [{ t: ' */', c: 'text-editor-comment italic' }],
+  [{ t: '// Software, broken down to a certain level, is ', c: 'text-editor-comment italic' }, { t: 'input', c: 'text-editor-ink' }, { t: ', ', c: 'text-editor-comment italic' }, { t: 'process', c: 'text-editor-ink' }, { t: ', ', c: 'text-editor-comment italic' }, { t: 'output', c: 'text-editor-ink' }, { t: '.', c: 'text-editor-comment italic' }],
   [],
 ];
