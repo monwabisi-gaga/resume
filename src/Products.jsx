@@ -13,16 +13,16 @@ const Products = forwardRef(function Products(_props, ref) {
   }, []);
 
   return (
-    <section ref={ref} className="flex min-h-screen shrink-0 snap-start snap-always flex-col items-center justify-between gap-10 bg-bg px-8 pt-24 pb-0 text-ink">
+    <section ref={ref} className="flex min-h-[100svh] shrink-0 snap-start snap-always flex-col items-center justify-between gap-8 bg-bg px-5 pt-20 pb-0 text-ink sm:gap-10 sm:px-8 sm:pt-24">
       <div
         className={`w-full max-w-[1180px] transition-all duration-700 ease-out motion-reduce:transition-none ${
           revealed ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
         }`}
       >
-        <h2 className="mb-10 font-display text-[clamp(28px,4vw,42px)] font-extrabold leading-[1.05] tracking-[-0.01em]">Projects</h2>
+        <h2 className="mb-7 font-display text-[clamp(28px,4vw,42px)] font-extrabold leading-[1.05] tracking-[-0.01em] sm:mb-10">Projects</h2>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col rounded-2xl border border-border bg-bg-card p-7">
+          <div className="flex flex-col rounded-2xl border border-border bg-bg-card p-5 sm:p-7">
             <div className="mb-4 flex flex-col items-start gap-2">
               <h3 className="font-display text-2xl font-extrabold tracking-[-0.01em]">BlazeGard</h3>
               <span className="rounded-full border border-border px-3 py-1 font-mono text-[11px] font-bold tracking-[0.08em] text-ink-dim uppercase">Prototype</span>
@@ -44,7 +44,7 @@ const Products = forwardRef(function Products(_props, ref) {
             </a>
           </div>
 
-          <div className="flex flex-col rounded-2xl border border-border bg-bg-card p-7">
+          <div className="flex flex-col rounded-2xl border border-border bg-bg-card p-5 sm:p-7">
             <div className="mb-4 flex flex-col items-start gap-2">
               <h3 className="font-display text-2xl font-extrabold tracking-[-0.01em]">Kwazi</h3>
               <span className="rounded-full bg-accent px-3 py-1 font-mono text-[11px] font-bold tracking-[0.08em] text-bg uppercase">Live</span>
@@ -63,7 +63,7 @@ const Products = forwardRef(function Products(_props, ref) {
             </a>
           </div>
 
-          <div className="flex flex-col rounded-2xl border border-border bg-bg-card p-7">
+          <div className="flex flex-col rounded-2xl border border-border bg-bg-card p-5 sm:p-7">
             <div className="mb-4 flex flex-col items-start gap-2">
               <h3 className="font-display text-2xl font-extrabold tracking-[-0.01em]">OrangeDotTaxi</h3>
               <span className="rounded-full bg-accent px-3 py-1 font-mono text-[11px] font-bold tracking-[0.08em] text-bg uppercase">Demo</span>

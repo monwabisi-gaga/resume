@@ -94,7 +94,7 @@ export default function App() {
   return (
     <>
       <ThemeToggle />
-      <main className="h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
+      <main className="h-[100svh] min-h-[100svh] snap-y snap-mandatory overflow-y-scroll scroll-smooth">
         {!DEV_SKIP_TO_PRODUCTS && <Hero ref={heroRef} />}
         {!DEV_SKIP_TO_PRODUCTS && <Thesis ref={thesisRef} />}
         {!DEV_SKIP_TO_PRODUCTS && <Stage ref={stageRef} started={stageStarted} onResultTyped={() => setResultTyped(true)} />}

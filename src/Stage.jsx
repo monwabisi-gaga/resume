@@ -144,19 +144,19 @@ const Stage = forwardRef(function Stage({ started, onResultTyped }, ref) {
   }, [started]);
 
   return (
-    <section ref={ref} data-stage className="relative flex h-screen shrink-0 snap-start snap-always items-start overflow-hidden bg-editor-bg px-0 pt-16 text-editor-ink">
+    <section ref={ref} data-stage className="relative flex h-[100svh] min-h-[100svh] shrink-0 snap-start snap-always items-start overflow-hidden bg-editor-bg px-0 pt-28 text-editor-ink sm:pt-16">
       <p
         ref={phaseLabelRef}
         data-phase-label
-        className="absolute top-8 left-6 font-mono text-xs font-bold tracking-[0.24em] text-editor-ink uppercase sm:left-9"
+        className="absolute top-6 left-4 font-mono text-[10px] font-bold tracking-[0.2em] text-editor-ink uppercase sm:top-8 sm:left-9 sm:text-xs sm:tracking-[0.24em]"
       />
 
-      <div className="mx-auto flex w-full max-w-7xl px-6">
-        <div aria-hidden="true" ref={gutterRef} data-line-gutter className="w-[3ch] shrink-0 select-none pr-4 text-right font-mono text-sm leading-[1.7] text-editor-gutter" />
-        <div ref={codeColumnRef} data-code-column className="min-h-[1.7em] flex-1 whitespace-pre-wrap break-words border-l border-editor-line pl-6 pr-28 font-mono text-sm leading-[1.7]" />
+      <div className="mx-auto flex w-full max-w-7xl px-3 sm:px-6">
+        <div aria-hidden="true" ref={gutterRef} data-line-gutter className="w-[2ch] shrink-0 select-none pr-2 text-right font-mono text-[11px] leading-[1.55] text-editor-gutter sm:w-[3ch] sm:pr-4 sm:text-sm sm:leading-[1.7]" />
+        <div ref={codeColumnRef} data-code-column className="min-h-[1.55em] flex-1 whitespace-pre-wrap break-words border-l border-editor-line pl-3 pr-3 font-mono text-[11px] leading-[1.55] sm:min-h-[1.7em] sm:pl-6 sm:pr-28 sm:text-sm sm:leading-[1.7]" />
       </div>
 
-      <AdvanceCue ref={advanceCueRef} hidden label="continue / scroll" color="text-editor-gutter" />
+      <AdvanceCue ref={advanceCueRef} hidden label="continue / scroll" color="text-editor-gutter" placement="top" />
     </section>
   );
 });
